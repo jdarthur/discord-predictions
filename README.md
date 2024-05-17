@@ -1,6 +1,6 @@
 # Discord-predictions
 
-Script to parse out predicted gender and age from Discord analytics/events.json file
+Script to parse out predicted gender and age from Discord `analytics/events.json` file
 
 # Usage
 
