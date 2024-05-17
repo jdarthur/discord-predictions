@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"sort"
 	"strings"
 )
 
@@ -32,6 +33,10 @@ func ParseFileForGender(filename string) (ListOfGender, error) {
 		output = append(output, value.(*Gender))
 	}
 
+	sort.Slice(output, func(i, j int) bool {
+		return output[i].ModelVersion.Before(output[j].ModelVersion)
+	})
+
 	fmt.Printf("Got %d items\n", len(output))
 
 	return output, nil
@@ -52,6 +57,10 @@ func ParseFileForAge(filename string) (ListOfAge, error) {
 	for _, value := range v {
 		output = append(output, value.(*Age))
 	}
+
+	sort.Slice(output, func(i, j int) bool {
+		return output[i].ModelVersion.Before(output[j].ModelVersion)
+	})
 
 	fmt.Printf("Got %d items\n", len(output))
 
